@@ -7,6 +7,7 @@ bower_components
 config.codekit
 node_modules
 npm-debug.log
+# css
 
 # Project Specific
 .libraries

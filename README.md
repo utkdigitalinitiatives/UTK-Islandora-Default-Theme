@@ -2,18 +2,64 @@
 
 # How to Use
 ```terminal
-> clone repo
-> npm install
-> npm run postinstall
-> grunt watch
+$ git clone -b 2016 https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
+$ npm install
+$ npm run postinstall
+$ grunt watch
 ```
 
-# Base Bootstrap Theme
+# Copy Theme into Islandora
+__OSX:__ (run once)
+> $ mkdir ~/GitHub/islandora_vagrant/themes/
 
-> 'Sleek, intuitive, and powerful mobile first front-end framework for faster and
-> easier web development.' - getbootstrap
+__OSX:__ (copies theme to Vagrant)
+> $ rsync -azP ~/GitHub/UTK-Islandora-Default-Theme ~/GitHub/islandora_vagrant/themes/
 
-This base theme bridges the gap between Drupal and the [Bootstrap Framework].
+__Vagrant:__ (copies theme from Vagrant to Drupal's theme directory)
+
+___Automatically___ (initial)
+```terminal
+$ cd /var/www/drupal/sites/all/themes/
+
+$ git clone -b 2016 --single-branch https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
+```
+
+
+OR ___Manually___ copy from local folder (while developing)
+```terminal
+$ rsync -azP /vagrant/themes/ /var/www/drupal/sites/all/themes/
+```
+
+
+__Set new template as default__
+```terminal
+$ cd /var/www/drupal
+
+$ drush theme pm-enable bootstrap
+
+$ drush vset theme_default bootstrap
+
+$ drush vset admin_theme bootstrap
+
+$ drush theme pm-disable bartik
+
+$ drush theme pm-disable seven
+
+$ drush theme pm-disable garland
+```
+
+### Load some sample content.
+```terminal
+$ git clone https://github.com/mjordan/islandora_scg.git
+
+$ drush --yes en islandora_scg
+
+$ drush --yes cc drush
+
+$ drush iscgl --user=admin --quantity=10 --content_model=islandora:sp_basic_image --parent=islandora:sp_basic_image_collection --namespace=testing --bgcolor=SlateGray
+
+$ drush iscgl --user=admin --quantity=2 --content_model=islandora:newspaperCModel --parent=islandora:newspaper_collection --namespace=testing --quantity_newspaper_issues=2
+```
 
 ### Features
 - [jsDelivr CDN](http://www.jsdelivr.com) for "out-of-the-box" styling and

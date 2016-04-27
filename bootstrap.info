@@ -1,5 +1,5 @@
-name = 'UTK 2016 Design'
-description = Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.
+name = 'UTK-Islandora-Default-Theme'
+description = Generated with Twitter Bootstrap, Grunt, Less (converting to SASS)
 core = 7.x
 
 
