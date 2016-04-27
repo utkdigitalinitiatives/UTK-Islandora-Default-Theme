@@ -1,7 +1,7 @@
 <!-- @file Project Page -->
 
 # How to Use
-__Required__: Node.js, Grunt, git(assuming this is already installed)
+__Required__: Node.js, Grunt, git(assuming this is already installed),
 [Brew Installer]('http://brew.sh')(Optional)
 ```shell
 $ brew install node
@@ -77,7 +77,12 @@ $ drush --yes cc drush
 
 $ drush iscgl --user=admin --quantity=10 --content_model=islandora:sp_basic_image --parent=islandora:sp_basic_image_collection --namespace=testing --bgcolor=SlateGray
 
+$ drush iscgl --user=admin --quantity=15 --content_model=islandora:sp_large_image_cmodel --parent=islandora:sp_large_image_collection --namespace=testing --bgcolor=SlateGray
+
 $ drush iscgl --user=admin --quantity=2 --content_model=islandora:newspaperCModel --parent=islandora:newspaper_collection --namespace=testing --quantity_newspaper_issues=2
+
+$ drush iscgl --user=admin --quantity=2 --content_model=islandora:newspaperCModel --parent=islandora:newspaper_collection --namespace=islandora
+
 ```
 
 ### Features
