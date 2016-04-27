@@ -3,12 +3,12 @@
 # How to Use
 __Required__: Node.js, Grunt, git(assuming this is already installed)
 [Brew Installer]('http://brew.sh')(Optional)
-```terminal
+```shell
 $ brew install node
 $ npm install -g grunt-cli
 ```
 
-```terminal
+```shell
 $ git clone -b 2016 https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
 $ npm install
 $ npm run postinstall
@@ -16,33 +16,31 @@ $ grunt watch
 ```
 
 # Copy Theme into Islandora
-#### __OSX:__ (run once)
-> $ mkdir ~/GitHub/islandora_vagrant/themes/
 
-#### __OSX:__ (copies theme to Vagrant)
-> $ rsync -azP ~/GitHub/UTK-Islandora-Default-Theme ~/GitHub/islandora_vagrant/themes/
+__Vagrant:__ (copies theme from Vagrant to Drupal's theme directory)
+<hr/>
+#### ___Automatically___
+  ```shell
+  $ cd /var/www/drupal/sites/all/themes/
 
-#### __Vagrant:__ (copies theme from Vagrant to Drupal's theme directory)
+  $ git clone -b 2016 --single-branch https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
+  ```
 
-___Automatically___ (initial)
-```terminal
-$ cd /var/www/drupal/sites/all/themes/
+##### ___OR Manually___
+*OSX:* (copies theme to Vagrant)
+  ```shell
+  $ mkdir ~/GitHub/islandora_vagrant/themes/
+  $ rsync -azP ~/GitHub/UTK-Islandora-Default-Theme ~/GitHub/islandora_vagrant/themes/
+  ```
 
-$ git clone -b 2016 --single-branch https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
-```
-
-
-OR ___Manually___ copy from local folder (while developing)
-```terminal
-$ rsync -azP /vagrant/themes/ /var/www/drupal/sites/all/themes/
-```
-
-
+<hr/>
 __Set new template as default__
-```terminal
+```shell
 $ cd /var/www/drupal
 
-$ drush theme pm-enable bootstrap
+$ drush cache-clear drush
+
+$ drush -y pm-enable bootstrap
 
 $ drush vset theme_default bootstrap
 
@@ -55,8 +53,17 @@ $ drush theme pm-disable seven
 $ drush theme pm-disable garland
 ```
 
+__Vagrant:__ copy from local folder (while developing)
+```shell
+$ rsync -azP /vagrant/themes/ /var/www/drupal/sites/all/themes/
+```
+
+```diff
+- Note: run rsync after updates on local machine to copy to Vagrant folder
+```
+
 ### Load some sample content.
-```terminal
+```shell
 $ git clone https://github.com/mjordan/islandora_scg.git
 
 $ drush --yes en islandora_scg
