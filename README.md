@@ -1,6 +1,13 @@
 <!-- @file Project Page -->
 
 # How to Use
+__Required__: Node.js, Grunt, git(assuming this is already installed)
+[Brew Installer]('http://brew.sh')(Optional)
+```terminal
+$ brew install node
+$ npm install -g grunt-cli
+```
+
 ```terminal
 $ git clone -b 2016 https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
 $ npm install
@@ -9,13 +16,13 @@ $ grunt watch
 ```
 
 # Copy Theme into Islandora
-__OSX:__ (run once)
+#### __OSX:__ (run once)
 > $ mkdir ~/GitHub/islandora_vagrant/themes/
 
-__OSX:__ (copies theme to Vagrant)
+#### __OSX:__ (copies theme to Vagrant)
 > $ rsync -azP ~/GitHub/UTK-Islandora-Default-Theme ~/GitHub/islandora_vagrant/themes/
 
-__Vagrant:__ (copies theme from Vagrant to Drupal's theme directory)
+#### __Vagrant:__ (copies theme from Vagrant to Drupal's theme directory)
 
 ___Automatically___ (initial)
 ```terminal
