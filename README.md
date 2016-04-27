@@ -16,26 +16,16 @@ $ grunt watch
 ```
 
 # Copy Theme into Islandora
-
 __Vagrant:__ (copies theme from Vagrant to Drupal's theme directory)
 
----
-#### ___Automatically___
+#### ___Clone to Vagrant directly___
 ```shell
 $ cd /var/www/drupal/sites/all/themes/
 
 $ git clone -b 2016 --single-branch https://github.com/utkdigitalinitiatives/UTK-Islandora-Default-Theme.git
 ```
 
-##### ___OR Manually___
-OSX: (copies theme to Vagrant)
-```shell
-$ mkdir ~/GitHub/islandora_vagrant/themes/
-
-$ rsync -azP ~/GitHub/UTK-Islandora-Default-Theme ~/GitHub/islandora_vagrant/themes/
-```
----
-__Set new template as default__
+__Set this template as default & disable original templates__
 ```shell
 $ cd /var/www/drupal
 
@@ -54,17 +44,31 @@ $ drush -y pm-disable seven
 $ drush -y pm-disable garland
 ```
 
-__Vagrant:__ copy from local folder (while developing)
+# Local Develope and Update
+___Manual___ Local Development
+
+___OSX:___ (copies theme to Vagrant)
+```shell
+$ mkdir ~/GitHub/islandora_vagrant/themes/
+
+$ rsync -azP ~/GitHub/UTK-Islandora-Default-Theme ~/GitHub/islandora_vagrant/themes/
+```
+
+```diff
++ Note: run rsync after each update on local machine to copy to Vagrant
+```
+
+__Vagrant:__ (copies Vagrant themes folder to drupal themes)
 ```shell
 $ rsync -azP /vagrant/themes/ /var/www/drupal/sites/all/themes/
 ```
 
-```diff
-+ Note: run rsync after updates on local machine to copy to Vagrant folder
-```
+
 
 ### Load some sample content.
 ```shell
+$ cd /var/www/drupal/sites/all/modules
+
 $ git clone https://github.com/mjordan/islandora_scg.git
 
 $ drush --yes en islandora_scg
