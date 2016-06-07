@@ -3,6 +3,18 @@
 @normal:  ~"screen and (min-width: @{screen-md-min})";
 @wide:    ~"screen and (min-width: @{screen-lg-min})";
 
+.manage-datastreams .sticky-enabled .tableheader-processed .sticky-table table {
+  border-collapse: collapse;
+}
+
+td {
+  padding:6px;
+}
+
+.odd {
+  background: #CFC;
+}
+
 // Drop shadows.
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow;
@@ -178,6 +190,11 @@ body {
     margin-right: 0;
     padding-left: 0;
   }
+}
+
+#logoImage {
+  width: 35px;
+  height: auto;
 }
 
 // Navigation.
@@ -738,6 +755,7 @@ td.module,
   background: @table-border-color;
   font-weight: 700;
 }
+
 
 // Book module.
 .book-toc > .dropdown-menu {
